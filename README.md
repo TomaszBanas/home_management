@@ -1,6 +1,7 @@
-##Colaborastors
-Konrad Filek
-Jarosław Dutka
-Tomasz Banaś
-##Temat
+#Colaborastors
+
+Konrad Filek | Jarosław Dutka | Tomasz Banaś
+
+#Temat
+
 Zarządzanie domem
