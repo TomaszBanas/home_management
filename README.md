@@ -7,7 +7,7 @@ Konrad Filek | Jarosław Dutka | Tomasz Banaś
 Zarządzanie domem
 
 - Automatyzacja sterowania urządzeń
-	- Harmonogram dnia (o której godzinie urzadzenie ma się jak zachować)
+	- Harmonogram dnia (określenie jak dane urządzenie o danej porze / godzinie ma się zachować)
 - Urządzenia
 	- Oświetlenie
 	- Rolety
