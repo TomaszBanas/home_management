@@ -24,4 +24,4 @@ Zarządzanie domem
 	- Zmiana hasła powoduje usunięcie reszty użytkowników
 
 
-<img src="./uml/Smaro_home.svg">
+<img src="https://raw.githubusercontent.com/TomaszBanas/inzynieria_oprogramowania_home_management/main/uml/Smaro_home.svg">
