@@ -22,3 +22,6 @@ Zarządzanie domem
 - Kontrola możliwa jedynie po weryfikacji kodu / hasła domu
 	- Zarządca domu (może zmieniać hasło)
 	- Zmiana hasła powoduje usunięcie reszty użytkowników
+
+
+<img src="https://raw.githubusercontent.com/TomaszBanas/inzynieria_oprogramowania_home_management/main/uml/Smaro_home.svg">
