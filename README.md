@@ -25,3 +25,4 @@ Zarządzanie domem
 
 
 <img src="https://raw.githubusercontent.com/TomaszBanas/inzynieria_oprogramowania_home_management/main/uml/Smaro_home.svg">
+<img src="https://raw.githubusercontent.com/TomaszBanas/inzynieria_oprogramowania_home_management/main/uml/home_management_database.svg">
