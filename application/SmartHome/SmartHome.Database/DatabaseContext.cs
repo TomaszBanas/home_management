@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using SmartHome.Database.Models;
 using System;
 using System.Collections.Generic;
@@ -10,18 +11,25 @@ namespace SmartHome.Database
 {
     public class DatabaseContext : DbContext
     {
+        private readonly string DbPath;
+        
         public DbSet<Cache> Cache { get; set; }
 
 
-        public string DbPath { get; }
 
-        public DatabaseContext()
+        public DatabaseContext(IOptions<DatabaseContextConfig> config)
         {
-            var folder = Environment.SpecialFolder.LocalApplicationData;
-            var path = Environment.GetFolderPath(folder);
-            DbPath = System.IO.Path.Join(path, "database.db");
+            DbPath = config.Value.ConnectionString;
         }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder options) => options.UseSqlite($"Data Source={DbPath}");
+        protected override void OnConfiguring(DbContextOptionsBuilder options)
+        {
+            options.UseSqlite($"Data Source={DbPath}");
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            Database.Migrate();
+        }
     }
 }

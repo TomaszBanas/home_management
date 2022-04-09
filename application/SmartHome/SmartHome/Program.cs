@@ -10,6 +10,7 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+builder.Services.Configure<DatabaseContextConfig>(options => options.ConnectionString = builder.Configuration.GetConnectionString("DatabaseContext"));
 builder.Services.AddDbContext<DatabaseContext>();
 builder.Services.AddScoped<CacheRepository>();
 
