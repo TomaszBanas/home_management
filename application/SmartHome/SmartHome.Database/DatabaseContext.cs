@@ -14,6 +14,7 @@ namespace SmartHome.Database
         private readonly string DbPath;
         
         public DbSet<Cache> Cache { get; set; }
+        public DbSet<EntityType> EntityType { get; set; }
 
 
 
@@ -24,12 +25,15 @@ namespace SmartHome.Database
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
-            options.UseSqlite($"Data Source={DbPath}");
+            options.UseSqlite($"Data Source=./database.db");
+            //options.UseSqlite($"Data Source={DbPath}");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            Database.Migrate();
+            modelBuilder.Entity<EntityType>()
+                .HasIndex(u => u.Key)
+                .IsUnique();
         }
     }
 }

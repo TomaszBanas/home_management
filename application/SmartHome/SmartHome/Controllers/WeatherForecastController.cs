@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using SmartHome.Database;
+using SmartHome.Database.Common;
 using SmartHome.Database.Models;
 using SmartHome.Database.Repositories;
 
@@ -21,7 +22,8 @@ namespace SmartHome.Controllers
         [HttpGet(Name = "GetWeatherForecast")]
         public async Task<IActionResult> Get()
         {
-            return Ok(await _cacheRepository.GetAllAsync());
+            return Ok(EntityTypes.ToModels());
+            //return Ok(await _cacheRepository.GetAllAsync());
         }
     }
 }
