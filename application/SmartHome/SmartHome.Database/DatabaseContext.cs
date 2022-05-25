@@ -1,4 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Console;
 using Microsoft.Extensions.Options;
 using SmartHome.Database.Models;
 using System;
@@ -12,7 +14,7 @@ namespace SmartHome.Database
     public class DatabaseContext : DbContext
     {
         private readonly string DbPath;
-        
+
         public DbSet<Cache> Cache { get; set; }
         public DbSet<EntityType> EntityType { get; set; }
 
@@ -25,7 +27,9 @@ namespace SmartHome.Database
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
-            options.UseSqlite($"Data Source=./database.db");
+            options
+                .UseLoggerFactory(LoggerFactory.Create(builder => { builder.AddConsole(); }))
+                .UseSqlite($"Data Source=./database.db");
             //options.UseSqlite($"Data Source={DbPath}");
         }
 

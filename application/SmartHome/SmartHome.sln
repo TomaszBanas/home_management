@@ -11,7 +11,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmartHome.Models", "SmartHo
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{67DBFB0B-DE65-4AFE-B3AE-A876D3D1C31B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartHome.ConsoleTest", "SmartHome.ConsoleTest\SmartHome.ConsoleTest.csproj", "{5A4165A9-0AEF-42B8-9AA3-91BC04E36573}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmartHome.ConsoleTest", "SmartHome.ConsoleTest\SmartHome.ConsoleTest.csproj", "{5A4165A9-0AEF-42B8-9AA3-91BC04E36573}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartHome.BL", "SmartHome.BL\SmartHome.BL.csproj", "{BA8ECB6E-BC62-4676-A879-05AF521EC043}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartHome.Abstraction", "SmartHome.Abstraction\SmartHome.Abstraction.csproj", "{083B92C2-C746-4087-95CE-EDF4B6C0D030}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartHome.Utility", "SmartHome.Utility\SmartHome.Utility.csproj", "{FEC79EC5-C41F-4386-84BA-066AAA3BCEB2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,6 +41,18 @@ Global
 		{5A4165A9-0AEF-42B8-9AA3-91BC04E36573}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5A4165A9-0AEF-42B8-9AA3-91BC04E36573}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5A4165A9-0AEF-42B8-9AA3-91BC04E36573}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA8ECB6E-BC62-4676-A879-05AF521EC043}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA8ECB6E-BC62-4676-A879-05AF521EC043}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA8ECB6E-BC62-4676-A879-05AF521EC043}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA8ECB6E-BC62-4676-A879-05AF521EC043}.Release|Any CPU.Build.0 = Release|Any CPU
+		{083B92C2-C746-4087-95CE-EDF4B6C0D030}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{083B92C2-C746-4087-95CE-EDF4B6C0D030}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{083B92C2-C746-4087-95CE-EDF4B6C0D030}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{083B92C2-C746-4087-95CE-EDF4B6C0D030}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FEC79EC5-C41F-4386-84BA-066AAA3BCEB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FEC79EC5-C41F-4386-84BA-066AAA3BCEB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FEC79EC5-C41F-4386-84BA-066AAA3BCEB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FEC79EC5-C41F-4386-84BA-066AAA3BCEB2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

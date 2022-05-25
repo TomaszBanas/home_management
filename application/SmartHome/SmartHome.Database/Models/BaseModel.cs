@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SmartHome.Abstraction.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace SmartHome.Database.Models
 {
-    public class BaseModel
+    public class BaseModel : IDatabaseModel
     {
         [Key]
         public Guid Id { get; set; }
