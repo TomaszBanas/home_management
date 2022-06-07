@@ -18,9 +18,10 @@ namespace SmartHome.Database
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
+            var dir = Directory.GetParent(Directory.GetParent(Directory.GetParent(Directory.GetCurrentDirectory()).ToString()).ToString());
             options
                 .UseLoggerFactory(LoggerFactory.Create(builder => { builder.AddConsole(); }))
-                .UseSqlite($"Data Source=./database.db");
+                .UseSqlite($@"Data Source={dir}\database.db");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

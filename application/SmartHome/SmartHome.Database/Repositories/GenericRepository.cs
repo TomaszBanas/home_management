@@ -8,14 +8,14 @@ using System.Threading.Tasks;
 
 namespace SmartHome.Database.Repositories
 {
-    public class GenericRepository<T>
+    public class GenericRepository<T> : IDisposable
         where T : BaseModel
     {
         private readonly DatabaseContext _databaseContext;
 
-        public GenericRepository(DatabaseContext databaseContext)
+        public GenericRepository()
         {
-            _databaseContext = databaseContext;
+            _databaseContext = new DatabaseContext();
         }
 
         public T Add(T data)
@@ -57,6 +57,10 @@ namespace SmartHome.Database.Repositories
             //_databaseContext.Set<T>().ToList().RemoveAll(x => x.Id == data.Id);
             //_databaseContext.Set<T>().ToList().Add(data);
             return data;
+        }
+        public void Dispose()
+        {
+            _databaseContext.Dispose();
         }
     }
 }
