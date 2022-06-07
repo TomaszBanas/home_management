@@ -30,10 +30,16 @@ namespace SmartHome.App
             Console.Clear();
             Console.WriteLine("User name:");
             var username = Console.ReadLine();
+            if (string.IsNullOrWhiteSpace(username))
+                return;
             var array = Enum.GetValues(typeof(Group)).Cast<Group>().ToArray().Where(x => (int)x >= _user.Group).Select(x => new KeyValuePair<int, string>((int)x, x.ToString())).ToList();
             var group = (Group)ConsoleExtensions.SelectEnum(array, "Group:");
+            if (group == Group.NotSet)
+                return;
             Console.WriteLine("Password:");
             var password = Console.ReadLine();
+            if (string.IsNullOrWhiteSpace(password))
+                return;
 
             using var repo = new GenericRepository<User>();
             repo.Add(new User()
@@ -44,6 +50,59 @@ namespace SmartHome.App
                 CreatedBy = _user.UserName,
                 UpdatedBy = _user.UserName
             });
+
+            Console.Clear();
+            Console.WriteLine("User created successfully!");
+            Console.ReadKey();
+        }
+
+        public void DeleteUserConsole()
+        {
+            Console.Clear();
+            using var repo = new GenericRepository<User>();
+            var user = SelectUser();
+            if (user == null)
+                return;
+            repo.Delete(user.Id);
+
+            Console.Clear();
+            Console.WriteLine("User removed successfully!");
+            Console.ReadKey();
+        }
+
+        public void UpdateUserConsole()
+        {
+            Console.Clear();
+            using var repo = new GenericRepository<User>();
+            var user = SelectUser();
+            if (user == null)
+                return;
+
+            Console.WriteLine("User name:");
+            var username = Console.ReadLine();
+            Console.WriteLine("Password:");
+            var password = Console.ReadLine();
+            if (string.IsNullOrWhiteSpace(password))
+                return;
+            user.UserName = username;
+            user.Password = password;
+            repo.Update(user);
+
+            Console.Clear();
+            Console.WriteLine("User updated successfully!");
+            Console.ReadKey();
+        }
+
+        private User SelectUser()
+        {
+            using var repo = new GenericRepository<User>();
+            var users = repo.GetEnumerable().Where(x => x.CreatedBy == _user.UserName && x.UserName != _user.UserName).ToList();
+            var array = users.Select((x, i) => new KeyValuePair<int, string>(i + 1, x.UserName)).ToList();
+            var userIndex = ConsoleExtensions.SelectEnum(array, "Select user:");
+            if (userIndex <= 0)
+                return null;
+            var user = users[userIndex - 1];
+            return user;
         }
     }
 }

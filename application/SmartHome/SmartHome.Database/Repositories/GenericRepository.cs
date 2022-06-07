@@ -1,4 +1,5 @@
-﻿using SmartHome.Database;
+﻿using Microsoft.EntityFrameworkCore;
+using SmartHome.Database;
 using SmartHome.Database.Models;
 using System;
 using System.Collections.Generic;
@@ -30,7 +31,7 @@ namespace SmartHome.Database.Repositories
 
         public void Delete(Guid Id)
         {
-            var model = _databaseContext.Set<T>().Single(x => x.Id.ToString() == Id.ToString());
+            var model = _databaseContext.Set<T>().Single(x => x.Id == Id);
             _databaseContext.Set<T>().Remove(model);
             _databaseContext.SaveChanges();
         }
@@ -53,9 +54,9 @@ namespace SmartHome.Database.Repositories
         public T Update(T data)
         {
             data.UpdatedOn = DateTime.Now;
-            // TODO update 
-            //_databaseContext.Set<T>().ToList().RemoveAll(x => x.Id == data.Id);
-            //_databaseContext.Set<T>().ToList().Add(data);
+            _databaseContext.Set<T>().Attach(data);
+            _databaseContext.Entry(data).State = EntityState.Modified;
+            _databaseContext.SaveChanges();
             return data;
         }
         public void Dispose()

@@ -77,6 +77,12 @@ namespace SmartHome.App
                     case Modes.AddUser:
                         new UserManagerment(_user).AddUserConsole();
                         break;
+                    case Modes.DeleteUser:
+                        new UserManagerment(_user).DeleteUserConsole();
+                        break;
+                    case Modes.EditUser:
+                        new UserManagerment(_user).UpdateUserConsole();
+                        break;
                     //case Modes.InsertDevice:
                     //    InsertDevice();
                     //    break;
