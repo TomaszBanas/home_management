@@ -1,5 +1,6 @@
 ﻿using SmartHome.Database.Models;
 using SmartHome.Database.Repositories;
+using SmartHome.Utility.Extensions;
 using System;
 
 namespace SmartHome.App
@@ -28,35 +29,28 @@ namespace SmartHome.App
     {
         private static Modes? mode;
 
-        private static string _userName;
+        private static User _user;
 
         public static void Login()
         {
-            _userName = null;
-            while (string.IsNullOrWhiteSpace(_userName))
+            _user = null;
+            using var repo = new GenericRepository<User>();
+            while (_user == null)
             {
                 Console.Clear();
                 Console.WriteLine("Enter login");
                 var login = Console.ReadLine();
                 Console.WriteLine("Enter passord");
                 var password = Console.ReadLine();
-                if(login == "admin" && password == "admin") // check with db
-                {
-                    _userName = login;
-                }
+                _user = repo.GetEnumerable().FirstOrDefault(x => x.UserName == login && x.Password == password);
             }
         }
 
         public static Modes SelectMode()
         {
             Console.Clear();
-            var array = Enum.GetValues(typeof(Modes)).Cast<Modes>().ToArray();
-            Console.WriteLine(String.Join("\n\r", array.Where(x => x > 0).Select(x => $"{(int)x}. {x.ToString()}")));
-            Console.WriteLine("Select mode:");
-            var modeString = Console.ReadLine();
-            int mode = 0;
-            int.TryParse(modeString, out mode);
-            return (Modes)mode;
+            var array = Enum.GetValues(typeof(Modes)).Cast<Modes>().ToArray().Select(x => new KeyValuePair<int, string>((int)x, x.ToString())).ToList();
+            return (Modes)ConsoleExtensions.SelectEnum(array, "Select mode:");
         }
 
         public static void Main(string[] args)
@@ -80,9 +74,9 @@ namespace SmartHome.App
                     case Modes.Login:
                         Login();
                         break;
-                    //case Modes.InsertUser:
-                    //    InsertUser();
-                    //    break;
+                    case Modes.AddUser:
+                        new UserManagerment(_user).AddUserConsole();
+                        break;
                     //case Modes.InsertDevice:
                     //    InsertDevice();
                     //    break;

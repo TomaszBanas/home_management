@@ -15,10 +15,12 @@ namespace SmartHome.Database
     {
         public DbSet<Cache> Cache { get; set; }
         public DbSet<EntityType> EntityType { get; set; }
+        public DbSet<User> Users { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
-            var dir = Directory.GetParent(Directory.GetParent(Directory.GetParent(Directory.GetCurrentDirectory()).ToString()).ToString());
+            var dir = @"D:\Projects\inzynieria_oprogramowania_home_management\application\SmartHome\SmartHome.App"; // to create a migration set your local machine destination
+            //var dir = Directory.GetParent(Directory.GetParent(Directory.GetParent(Directory.GetCurrentDirectory()).ToString()).ToString());
             options
                 .UseLoggerFactory(LoggerFactory.Create(builder => { builder.AddConsole(); }))
                 .UseSqlite($@"Data Source={dir}\database.db");
