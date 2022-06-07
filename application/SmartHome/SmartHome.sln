@@ -3,11 +3,21 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32319.34
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartHome", "SmartHome\SmartHome.csproj", "{1A0BE93D-D5ED-48DF-91F4-623BD28B8D37}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmartHome", "SmartHome\SmartHome.csproj", "{1A0BE93D-D5ED-48DF-91F4-623BD28B8D37}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartHome.Database", "SmartHome.Database\SmartHome.Database.csproj", "{8E799CC7-0F23-4DEC-87FD-16B927B6395C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmartHome.Database", "SmartHome.Database\SmartHome.Database.csproj", "{8E799CC7-0F23-4DEC-87FD-16B927B6395C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartHome.Models", "SmartHome.Models\SmartHome.Models.csproj", "{89C852F5-1C1C-4FB1-AFFE-E32DD3A39EAC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmartHome.Models", "SmartHome.Models\SmartHome.Models.csproj", "{89C852F5-1C1C-4FB1-AFFE-E32DD3A39EAC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Test", "Test", "{67DBFB0B-DE65-4AFE-B3AE-A876D3D1C31B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SmartHome.ConsoleTest", "SmartHome.ConsoleTest\SmartHome.ConsoleTest.csproj", "{5A4165A9-0AEF-42B8-9AA3-91BC04E36573}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartHome.BL", "SmartHome.BL\SmartHome.BL.csproj", "{BA8ECB6E-BC62-4676-A879-05AF521EC043}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartHome.Abstraction", "SmartHome.Abstraction\SmartHome.Abstraction.csproj", "{083B92C2-C746-4087-95CE-EDF4B6C0D030}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SmartHome.Utility", "SmartHome.Utility\SmartHome.Utility.csproj", "{FEC79EC5-C41F-4386-84BA-066AAA3BCEB2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,9 +37,28 @@ Global
 		{89C852F5-1C1C-4FB1-AFFE-E32DD3A39EAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{89C852F5-1C1C-4FB1-AFFE-E32DD3A39EAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{89C852F5-1C1C-4FB1-AFFE-E32DD3A39EAC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A4165A9-0AEF-42B8-9AA3-91BC04E36573}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A4165A9-0AEF-42B8-9AA3-91BC04E36573}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A4165A9-0AEF-42B8-9AA3-91BC04E36573}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A4165A9-0AEF-42B8-9AA3-91BC04E36573}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA8ECB6E-BC62-4676-A879-05AF521EC043}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA8ECB6E-BC62-4676-A879-05AF521EC043}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA8ECB6E-BC62-4676-A879-05AF521EC043}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA8ECB6E-BC62-4676-A879-05AF521EC043}.Release|Any CPU.Build.0 = Release|Any CPU
+		{083B92C2-C746-4087-95CE-EDF4B6C0D030}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{083B92C2-C746-4087-95CE-EDF4B6C0D030}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{083B92C2-C746-4087-95CE-EDF4B6C0D030}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{083B92C2-C746-4087-95CE-EDF4B6C0D030}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FEC79EC5-C41F-4386-84BA-066AAA3BCEB2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FEC79EC5-C41F-4386-84BA-066AAA3BCEB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FEC79EC5-C41F-4386-84BA-066AAA3BCEB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FEC79EC5-C41F-4386-84BA-066AAA3BCEB2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5A4165A9-0AEF-42B8-9AA3-91BC04E36573} = {67DBFB0B-DE65-4AFE-B3AE-A876D3D1C31B}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4EE2D6DF-0783-4467-B452-D4886D5E8768}

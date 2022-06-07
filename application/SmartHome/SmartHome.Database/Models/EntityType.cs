@@ -1,14 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace SmartHome.Database.Models
 {
-    public class Cache : BaseModel
+    public  class EntityType : EnumModel { }
+
+    public enum EntityTypeEnum
     {
-        public string Value { get; set; }
+        None = 0,
+        House = 1,
+        Room = 2,
+        Device = 3,
     }
 }
