@@ -56,14 +56,14 @@ namespace SmartHome.App
         public static void Main(string[] args)
         {
             // example of db connection
-            using (var repo = new GenericRepository<EntityType>())
-            {
-                var data = repo.GetAll();
-                foreach (var item in data)
-                {
-                    Console.WriteLine($"{item.Key} => {item.Name}");
-                }
-            }
+            //using (var repo = new GenericRepository<EntityType>())
+            //{
+            //    var data = repo.GetAll();
+            //    foreach (var item in data)
+            //    {
+            //        Console.WriteLine($"{item.Key} => {item.Name}");
+            //    }
+            //}
 
             Login();
             while (true)
