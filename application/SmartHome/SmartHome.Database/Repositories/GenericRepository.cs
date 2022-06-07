@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SmartHome.BL.Repositories
+namespace SmartHome.Database.Repositories
 {
     public class GenericRepository<T>
         where T : BaseModel

@@ -7,12 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="InternalModels\" />
-    <Folder Include="Models\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\SmartHome.Abstraction\SmartHome.Abstraction.csproj" />
+    <Compile Remove="InternalModels\**" />
+    <Compile Remove="Models\**" />
+    <EmbeddedResource Remove="InternalModels\**" />
+    <EmbeddedResource Remove="Models\**" />
+    <None Remove="InternalModels\**" />
+    <None Remove="Models\**" />
   </ItemGroup>
 
 </Project>
