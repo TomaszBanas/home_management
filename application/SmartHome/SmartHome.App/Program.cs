@@ -8,10 +8,17 @@ namespace SmartHome.App
     {
         Wrong = 0,
         Login,
-        InsertUser,
-        InsertDevice,
-        DeleteUser,
-        DeleteDevice
+        // Jarek do later
+        SetHarmonogram,
+        // Konrad do
+        SetDeviceState,
+        AddDevice,
+        EditDevice,
+        DeleteDevice,
+        // Tomek do
+        AddUser,
+        EditUser,
+        DeleteUser
     }
     /// <summary>
     /// IMPORTANT
@@ -35,7 +42,6 @@ namespace SmartHome.App
                 var password = Console.ReadLine();
                 if(login == "admin" && password == "admin") // check with db
                 {
-                    mode = Modes.InsertUser;
                     _userName = login;
                 }
             }
