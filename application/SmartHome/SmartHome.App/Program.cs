@@ -40,7 +40,7 @@ namespace SmartHome.App
                 Console.Clear();
                 Console.WriteLine("Enter login");
                 var login = Console.ReadLine();
-                Console.WriteLine("Enter passord");
+                Console.WriteLine("Enter password");
                 var password = Console.ReadLine();
                 _user = repo.GetEnumerable().FirstOrDefault(x => x.UserName == login && x.Password == password);
             }
@@ -83,15 +83,18 @@ namespace SmartHome.App
                     case Modes.EditUser:
                         new UserManagerment(_user).UpdateUserConsole();
                         break;
-                    //case Modes.InsertDevice:
-                    //    InsertDevice();
-                    //    break;
-                    //case Modes.DeleteUser:
-                    //    DeleteUser();
-                    //    break;
-                    //case Modes.DeleteDevice:
-                    //    DeleteDevice();
-                    //    break;
+                    case Modes.SetDeviceState:
+                        new DeviceManagement(_user).SetDeviceState();
+                        break;
+                    case Modes.AddDevice:
+                        new DeviceManagement(_user).AddDevice();
+                        break;
+                    case Modes.EditDevice:
+                        new DeviceManagement(_user).EditDevice();
+                        break;
+                    case Modes.DeleteDevice:
+                        new DeviceManagement(_user).DeleteDevice();
+                        break;
                 }
             }
         }

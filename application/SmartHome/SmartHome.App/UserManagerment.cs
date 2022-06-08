@@ -99,7 +99,7 @@ namespace SmartHome.App
             var users = repo.GetEnumerable().Where(x => x.CreatedBy == _user.UserName && x.UserName != _user.UserName).ToList();
             var array = users.Select((x, i) => new KeyValuePair<int, string>(i + 1, x.UserName)).ToList();
             var userIndex = ConsoleExtensions.SelectEnum(array, "Select user:");
-            if (userIndex <= 0)
+            if (userIndex <= 0 || array.Count < userIndex)
                 return null;
             var user = users[userIndex - 1];
             return user;
