@@ -22,8 +22,8 @@ namespace SmartHome.Database.Repositories
         public T Add(T data)
         {
             data.Id = Guid.NewGuid();
-            data.CreatedOn = DateTime.Now;
-            data.UpdatedOn = DateTime.Now;
+            data.CreatedOn = DateTime.UtcNow;
+            data.UpdatedOn = DateTime.UtcNow;
             _databaseContext.Set<T>().Add(data);
             _databaseContext.SaveChanges();
             return data;
@@ -50,14 +50,24 @@ namespace SmartHome.Database.Repositories
         {
             return _databaseContext.Set<T>();
         }
+        
+        public DbSet<T> GetDbSet()
+        {
+            return _databaseContext.Set<T>();
+        }
 
         public T Update(T data)
         {
-            data.UpdatedOn = DateTime.Now;
+            data.UpdatedOn = DateTime.UtcNow;
             _databaseContext.Set<T>().Attach(data);
             _databaseContext.Entry(data).State = EntityState.Modified;
             _databaseContext.SaveChanges();
             return data;
+        }
+        
+        public void SaveChanges()
+        {
+            _databaseContext.SaveChanges();
         }
         public void Dispose()
         {

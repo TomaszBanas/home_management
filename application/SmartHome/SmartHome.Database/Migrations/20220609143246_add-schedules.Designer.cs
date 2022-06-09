@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SmartHome.Database;
 
@@ -10,9 +11,11 @@ using SmartHome.Database;
 namespace SmartHome.Database.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20220609143246_add-schedules")]
+    partial class addschedules
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "7.0.0-preview.2.22153.1");
@@ -134,18 +137,6 @@ namespace SmartHome.Database.Migrations
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("TEXT");
 
-                    b.Property<Guid>("DeviceId")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("ExecutionTime")
-                        .HasColumnType("TEXT");
-
-                    b.Property<bool>("IsRecurring")
-                        .HasColumnType("INTEGER");
-
-                    b.Property<bool>("State")
-                        .HasColumnType("INTEGER");
-
                     b.Property<string>("UpdatedBy")
                         .IsRequired()
                         .HasColumnType("TEXT");
@@ -154,8 +145,6 @@ namespace SmartHome.Database.Migrations
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("DeviceId");
 
                     b.ToTable("Schedules");
                 });
@@ -194,17 +183,6 @@ namespace SmartHome.Database.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
-                });
-
-            modelBuilder.Entity("SmartHome.Database.Models.Schedule", b =>
-                {
-                    b.HasOne("SmartHome.Database.Models.Device", "Device")
-                        .WithMany()
-                        .HasForeignKey("DeviceId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Device");
                 });
 #pragma warning restore 612, 618
         }

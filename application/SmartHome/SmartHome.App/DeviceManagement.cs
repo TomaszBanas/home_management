@@ -10,14 +10,9 @@ using System.Threading.Tasks;
 
 namespace SmartHome.App
 {
-    class DeviceManagement
-    {
-        private readonly User _user;
-
-        public DeviceManagement(User user)
-        {
-            _user = user;
-        }
+    class DeviceManagement : BaseManagement
+    {        
+        public DeviceManagement(User user) : base(user) { }
         public void ListDevices()
         {
             using var repo = new GenericRepository<Device>();
@@ -191,19 +186,6 @@ namespace SmartHome.App
             Console.Clear();
             Console.WriteLine($"Deleting {device.Name}");
             Console.ReadKey();
-        }
-
-        private Device SelectDevice()
-        {
-            using var repo = new GenericRepository<Device>();
-            var devices = repo.GetAll();
-            var array = devices.Select((device, i) => new KeyValuePair<int, string>(i + 1, device.Name)).ToList();
-            var deviceIndex = ConsoleExtensions.SelectEnum(array, "Select device:");
-            if(deviceIndex <= 0 || array.Count < deviceIndex )
-            {
-                return null;
-            }
-            return devices[deviceIndex - 1];
         }
     }
 }

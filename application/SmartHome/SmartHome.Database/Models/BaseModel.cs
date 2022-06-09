@@ -19,15 +19,20 @@ namespace SmartHome.Database.Models
         public void SetCreated(string user)
         {
             Id = Guid.NewGuid();
-            CreatedOn = DateTime.Now;
+            CreatedOn = DateTime.UtcNow;
             CreatedBy = user;
             SetUpdated(user);
         }
 
         public void SetUpdated(string user)
         {
-            UpdatedOn = DateTime.Now;
+            UpdatedOn = DateTime.UtcNow;
             UpdatedBy = user;
+        }
+        
+        public void SetUpdated()
+        {
+            UpdatedOn = DateTime.UtcNow;
         }
     }
 }

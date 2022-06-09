@@ -16,15 +16,9 @@ namespace SmartHome.App
         User = 2,
         Guest = 3,
     }
-    public class UserManagerment
+    public class UserManagerment : BaseManagement
     {
-        private readonly User _user;
-
-        public UserManagerment(User user)
-        {
-            _user = user;
-        }
-
+        public UserManagerment(User user) : base(user) { }
         public void AddUserConsole()
         {
             Console.Clear();
@@ -91,18 +85,6 @@ namespace SmartHome.App
             Console.Clear();
             Console.WriteLine("User updated successfully!");
             Console.ReadKey();
-        }
-
-        private User SelectUser()
-        {
-            using var repo = new GenericRepository<User>();
-            var users = repo.GetEnumerable().Where(x => x.CreatedBy == _user.UserName && x.UserName != _user.UserName).ToList();
-            var array = users.Select((x, i) => new KeyValuePair<int, string>(i + 1, x.UserName)).ToList();
-            var userIndex = ConsoleExtensions.SelectEnum(array, "Select user:");
-            if (userIndex <= 0 || array.Count < userIndex)
-                return null;
-            var user = users[userIndex - 1];
-            return user;
         }
     }
 }

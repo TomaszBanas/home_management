@@ -1,4 +1,6 @@
-﻿using SmartHome.Database.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using SmartHome.Database;
+using SmartHome.Database.Models;
 using SmartHome.Database.Repositories;
 using SmartHome.Utility.Extensions;
 using System;
@@ -11,6 +13,7 @@ namespace SmartHome.App
         Login,
         // Jarek do later
         SetHarmonogram,
+        DeleteHarmonogram,
         // Konrad do
         SetDeviceState,
         AddDevice,
@@ -55,6 +58,11 @@ namespace SmartHome.App
 
         public static void Main(string[] args)
         {
+            // startup
+            using (var db = new DatabaseContext())
+            {
+                db.Database.Migrate();
+            }
             // example of db connection
             //using (var repo = new GenericRepository<EntityType>())
             //{
@@ -66,6 +74,9 @@ namespace SmartHome.App
             //}
 
             Login();
+
+            new ScheduleBackgrooundManagement(_user).Run();
+
             while (true)
             {
                 var mode = SelectMode();
@@ -94,6 +105,12 @@ namespace SmartHome.App
                         break;
                     case Modes.DeleteDevice:
                         new DeviceManagement(_user).DeleteDevice();
+                        break;
+                    case Modes.SetHarmonogram:
+                        new ScheduleManagement(_user).AddScheduleConsole();
+                        break;
+                    case Modes.DeleteHarmonogram:
+                        new ScheduleManagement(_user).DeleteSchedule();
                         break;
                 }
             }
