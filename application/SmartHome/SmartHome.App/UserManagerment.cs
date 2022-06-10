@@ -19,7 +19,7 @@ namespace SmartHome.App
     public class UserManagerment : BaseManagement
     {
         public UserManagerment(User user) : base(user) { }
-        public void AddUserConsole()
+        public void AddUser()
         {
             Console.Clear();
             Console.WriteLine("User name:");
@@ -50,7 +50,7 @@ namespace SmartHome.App
             Console.ReadKey();
         }
 
-        public void DeleteUserConsole()
+        public void DeleteUser()
         {
             Console.Clear();
             using var repo = new GenericRepository<User>();
@@ -64,7 +64,7 @@ namespace SmartHome.App
             Console.ReadKey();
         }
 
-        public void UpdateUserConsole()
+        public void UpdateUser()
         {
             Console.Clear();
             using var repo = new GenericRepository<User>();

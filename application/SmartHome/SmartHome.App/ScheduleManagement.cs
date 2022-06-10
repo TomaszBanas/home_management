@@ -40,7 +40,7 @@ namespace SmartHome.App
             Console.ReadKey();
         }
 
-        public void AddScheduleConsole()
+        public void AddSchedule()
         {
             using var repo = new GenericRepository<Schedule>();
 

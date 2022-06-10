@@ -75,7 +75,7 @@ namespace SmartHome.App
 
             Login();
 
-            new ScheduleBackgrooundManagement(_user).Run();
+            new ScheduleBackgroundManagement(_user).Run();
 
             while (true)
             {
@@ -86,13 +86,13 @@ namespace SmartHome.App
                         Login();
                         break;
                     case Modes.AddUser:
-                        new UserManagerment(_user).AddUserConsole();
+                        new UserManagerment(_user).AddUser();
                         break;
                     case Modes.DeleteUser:
-                        new UserManagerment(_user).DeleteUserConsole();
+                        new UserManagerment(_user).DeleteUser();
                         break;
                     case Modes.EditUser:
-                        new UserManagerment(_user).UpdateUserConsole();
+                        new UserManagerment(_user).UpdateUser();
                         break;
                     case Modes.SetDeviceState:
                         new DeviceManagement(_user).SetDeviceState();
@@ -107,7 +107,7 @@ namespace SmartHome.App
                         new DeviceManagement(_user).DeleteDevice();
                         break;
                     case Modes.SetHarmonogram:
-                        new ScheduleManagement(_user).AddScheduleConsole();
+                        new ScheduleManagement(_user).AddSchedule();
                         break;
                     case Modes.DeleteHarmonogram:
                         new ScheduleManagement(_user).DeleteSchedule();
