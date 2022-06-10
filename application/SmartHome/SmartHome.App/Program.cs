@@ -11,15 +11,12 @@ namespace SmartHome.App
     {
         Wrong = 0,
         Login,
-        // Jarek do later
         SetHarmonogram,
         DeleteHarmonogram,
-        // Konrad do
         SetDeviceState,
         AddDevice,
         EditDevice,
         DeleteDevice,
-        // Tomek do
         AddUser,
         EditUser,
         DeleteUser
@@ -58,20 +55,10 @@ namespace SmartHome.App
 
         public static void Main(string[] args)
         {
-            // startup
             using (var db = new DatabaseContext())
             {
                 db.Database.Migrate();
             }
-            // example of db connection
-            //using (var repo = new GenericRepository<EntityType>())
-            //{
-            //    var data = repo.GetAll();
-            //    foreach (var item in data)
-            //    {
-            //        Console.WriteLine($"{item.Key} => {item.Name}");
-            //    }
-            //}
 
             Login();
 

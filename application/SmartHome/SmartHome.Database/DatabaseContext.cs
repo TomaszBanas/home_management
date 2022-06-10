@@ -18,8 +18,6 @@ namespace SmartHome.Database
             ChangeTracker.LazyLoadingEnabled = true;
         }
 
-        public DbSet<Cache> Cache { get; set; }
-        public DbSet<EntityType> EntityType { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Device> Devices { get; set; }
         public DbSet<Schedule> Schedules { get; set; }
@@ -33,11 +31,6 @@ namespace SmartHome.Database
                 .UseSqlite($@"Data Source={dir}\database.db");
         }
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<EntityType>()
-                .HasIndex(u => u.Key)
-                .IsUnique();
-        }
+        protected override void OnModelCreating(ModelBuilder modelBuilder) { }
     }
 }

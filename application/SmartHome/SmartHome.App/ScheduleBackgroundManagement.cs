@@ -11,18 +11,12 @@ using System.Threading.Tasks;
 
 namespace SmartHome.App
 {
-    public class ScheduleBackgroundManagement
+    public class ScheduleBackgroundManagement : BaseManagement
     {
-        private readonly User _user;
-        private readonly TimeSpan _intervalTimeSpan = new TimeSpan(0, 0, 10);
-        
+        private readonly TimeSpan _intervalTimeSpan = new TimeSpan(0, 0, 10);   
         private Timer _timer;
 
-        public ScheduleBackgroundManagement(User user)
-        {
-            _user = user;
-            
-        }
+        public ScheduleBackgroundManagement(User user) : base(user) { }
 
         public void Run()
         {
